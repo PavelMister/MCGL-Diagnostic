@@ -55,7 +55,6 @@ namespace MCGL_Diagnostic
         /// </returns>
         private string GetPathToRepository()
         {
-            UpdateResult(GetJavaInstallationPath());
             string tempDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\MCGL";
             string[] variants = new string[] { @"\MinecraftLauncher", @"\MinecraftLauncher1", @"\MinecraftLauncher2", @"\MinecraftLauncher3", @"\MinecraftLauncher4" };
 
