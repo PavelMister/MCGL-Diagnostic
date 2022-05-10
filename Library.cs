@@ -231,7 +231,7 @@ namespace MCGL_Diagnostic
             }
             else
             {
-                string version = "0.0.3";
+                string version = MCGLForm._MCGLForm.version;
                 try
                 {
                     using (HttpClient client = new HttpClient
@@ -246,6 +246,14 @@ namespace MCGL_Diagnostic
                 if (serverHash.Trim() != currentHash.Trim())
                 {
                     DialogResult result = MessageBox.Show("Обнаружено обновление приложения (v" + version + "), обновить сейчас?", "Обнаружено обновление", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                    if ( ! System.IO.File.Exists("MCGL-DiagnosticUpdater.exe"))
+                    {
+                        using (var client = new System.Net.WebClient())
+                        {
+                            client.DownloadFile("https://github.com/PavelMister/MCGL-Diagnostic/raw/master/bin/Debug/MCGL-DiagnosticUpdater.exe", "MCGL-DiagnosticUpdater.exe");
+                        }
+                    }
 
                     if (result == DialogResult.Yes)
                     {
