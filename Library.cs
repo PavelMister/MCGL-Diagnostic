@@ -216,12 +216,13 @@ namespace MCGL_Diagnostic
                     Timeout = new System.TimeSpan(0, 0, 10)
                 })
                 {
-                    serverHash = client.GetStringAsync("https://raw.githubusercontent.com/PavelMister/MCGL-Diagnostic/master/bin/Debug/md5.hash?nocache=" + System.DateTime.Now.ToString()).Result;
+                    serverHash = (client.GetStringAsync("https://raw.githubusercontent.com/PavelMister/MCGL-Diagnostic/master/bin/Debug/md5.hash?nocache=" + System.DateTime.Now.ToString()).Result).Trim();
                 }
             } catch {
                 MessageBox.Show("Ошибка подключения к серверу обновления");
                 return;
             }
+
 
             if (currentHash == null)
             {
@@ -230,7 +231,7 @@ namespace MCGL_Diagnostic
             }
             else
             {
-                string version = "0.0.1";
+                string version = "0.0.3";
                 try
                 {
                     using (HttpClient client = new HttpClient

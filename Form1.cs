@@ -13,7 +13,7 @@ namespace MCGL_Diagnostic
         protected string mcglPath;
         public string decisionMessage;
         public static Library lib;
-        public string version = "1.0.2";
+        public string version = "1.0.3";
 
         public MCGLForm()
         {
